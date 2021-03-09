@@ -186,7 +186,7 @@ namespace Echecs.IHM
                 }
             }
 
-            // création des carreaux pour les piéces capturées
+            // création des carreaux pour les pièces capturées
             for (int i = 0; i < CAPTURES; i++)
             {
                 captures_blancs[i] = new PictureBox();

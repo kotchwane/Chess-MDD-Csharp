@@ -51,12 +51,12 @@ namespace Echecs.Domaine
             echiquier = new Echiquier(this);
 
             // placement des pieces
-            blancs.PlacerPieces(echiquier);  
-            noirs.PlacerPieces(echiquier);  
+            blancs.PlacerPieces(echiquier);
+            noirs.PlacerPieces(echiquier);
 
             /* TEST */
-            vue.ActualiserCase(4, 0, InfoPiece.RoiNoir);
-            vue.ActualiserCase(4, 7, InfoPiece.RoiBlanc);
+            // vue.ActualiserCase(4, 0, InfoPiece.RoiNoir);
+            //vue.ActualiserCase(4, 7, InfoPiece.RoiBlanc);
             /* FIN TEST */
 
             // initialisation de l'état
@@ -65,23 +65,21 @@ namespace Echecs.Domaine
 
         public void DeplacerPiece(int x_depart, int y_depart, int x_arrivee, int y_arrivee)
         {
-            /* TEST */
-            vue.ActualiserCase(x_depart,  y_depart,  null);
-            vue.ActualiserCase(x_arrivee, y_arrivee, InfoPiece.RoiBlanc);
-            /* FIN TEST */
-
             // case de départ
-            //Case depart = echiquier.cases[x_depart, y_depart];
+            Case depart = echiquier.cases[x_depart, y_depart];
 
             // case d'arrivée
-            //Case destination = echiquier.cases[x_arrivee, y_arrivee];
+            Case destination = echiquier.cases[x_arrivee, y_arrivee];
 
             // deplacer
-            //bool ok = depart.piece.Deplacer(destination);
+            bool ok = depart.piece.Deplacer(destination);
 
             // changer d'état
-            //if (ok)
-            //    ChangerEtat();
+            if (ok) {
+                ChangerEtat();
+                vue.ActualiserCase(x_depart, y_depart, null);
+                vue.ActualiserCase(x_arrivee, y_arrivee, destination.piece.info);
+            }
         }
 
         void ChangerEtat(bool echec = false, bool mat = false)

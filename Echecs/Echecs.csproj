@@ -47,6 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domaine\Cavalier.cs" />
+    <Compile Include="Domaine\Pion.cs" />
+    <Compile Include="Domaine\Fou.cs" />
+    <Compile Include="Domaine\Tour.cs" />
+    <Compile Include="Domaine\Roi.cs" />
     <Compile Include="Domaine\Echiquier.cs" />
     <Compile Include="Domaine\Case.cs" />
     <Compile Include="Domaine\Joueur.cs" />

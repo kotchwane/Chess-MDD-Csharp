@@ -7,19 +7,29 @@ using Echecs.IHM;
 
 namespace Echecs.Domaine
 {
-    public class Case
-    {
+    public class Case {
+
         // attributs
-        
+        public int x, y;
+
+        public Piece piece;
+        public Case newCase;
+
 
         // associations
-        
+
+        public Case(Piece piece, int x, int y) {
+            this.piece = piece;
+            this.x = x;
+            this.y = y;
+        }
+
 
         // methodes
         public void Link(Piece newPiece) {
-            // 1. Deconnecter newPiece de l'ancienne case
-            // 2. Connecter newPiece à cette case
+            this.piece = newPiece;
             newPiece.position = this;
+            this.piece.joueur.partie.vue.ActualiserCase(x, y, newPiece.info);
         }
 
         public void Unlink(Piece p) {
